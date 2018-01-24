@@ -16,9 +16,10 @@
                     </ul>
                   </li>
               </ul>
+              <div class='login login2'>{{ $t('m.loginText') }}</div>
           </div>
-          <language/>
       </div>
+      <language/>
   </div>
 </template>
 
@@ -76,7 +77,8 @@ export default {
     }
     .nav-links{
         position: absolute;
-        right: 35px;
+        right: 15px;
+        display: flex;
     }
     .nav-links>ul, .nav-links>ul>li{
         display: flex;
@@ -119,5 +121,16 @@ export default {
     }
     .li-drop li a{
         color: #fff
+    }
+    .login{
+        padding-left: 50px;
+        padding-right: 30px;
+        height: 42px;
+        border-radius: 21px;
+        background: #3d86e5 url(../images/login.png) no-repeat 7px 6px;
+        margin-top: 18px;
+        line-height: 40px;
+        color: #fff;
+        cursor: pointer;
     }
 </style>

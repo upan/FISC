@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="home">
       <div class="banner">
         <indexheader/>
         <h1 class="intr">

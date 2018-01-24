@@ -7,6 +7,7 @@ export const m = {
     headerTitle2: '机场天气',
     headerTitle3: '机场流量',
     headerTitle4: '分析报告',
+    loginText: '登录',
     searchTypeFnum: '航班号',
     searchTypeAirport: '机场',
     searchTypeAirline: '航司',
@@ -27,5 +28,15 @@ export const m = {
     description1: '环球飞行追踪，来自中国大陆ADS-B的飞行路线',
     description2: '中国机场天气状况及天气预报',
     description3: '中国机场的交通量',
-    description4: '定制的准时性能报告'
+    description4: '定制的准时性能报告',
+    dateNoEmptyInfoText: '日期不能为空',
+    switchCnAndEnInfoText: '中英文切换',
+    dateIllegalInfoText: '日期格式不合法',
+    fnumNoEmptyInfoText: '航班号不能为空',
+    airlineNoEmptyInfoText: '航司不能为空',
+    airportNoEmptyInfoText: '机场三字码不能为空',
+    fnumIllegalInfoText: '航班号不合法',
+    airlineIllegalInfoText: '航司不合法',
+    airportIllegalInfoText: '机场编码不合法',
+    pageNotFoundText: '不巧，网页走丢了...'
 }

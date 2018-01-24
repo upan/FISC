@@ -8,7 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = merge(common, {
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js'
+        filename: '[name].[chunkhash].js'
     },
     plugins: [
         new UglifyJSPlugin({
@@ -17,6 +17,6 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        new ExtractTextPlugin("[name]_[hash].css")
+        new ExtractTextPlugin("[name]_[chunkhash].css")
     ]
 })

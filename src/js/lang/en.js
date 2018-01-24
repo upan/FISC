@@ -7,6 +7,7 @@ export const m = {
     headerTitle2: 'Airport Weather',
     headerTitle3: 'Airport Operations',
     headerTitle4: 'Punctuality Analyzer',
+    loginText: 'login',
     searchTypeFnum: 'Flight No.',
     searchTypeAirport: 'Airports',
     searchTypeAirline: 'Airlines',
@@ -27,5 +28,15 @@ export const m = {
     description1: 'Global flight tracking, flight path sourced from ADS-B in mainland China',
     description2: 'Weather conditions and forecasts for Chinese airport',
     description3: 'Traffic volumes for Chinese airports',
-    description4: 'Customized on-time performance report'
+    description4: 'Customized on-time performance report',
+    dateNoEmptyInfoText: 'The date cannot be empty',
+    switchCnAndEnInfoText: 'Switching between Chinese and English',
+    dateIllegalInfoText: 'The date format is not legal',
+    fnumNoEmptyInfoText: 'The flight number cannot be empty',
+    airlineNoEmptyInfoText: 'The airline code cannot be empty',
+    airportNoEmptyInfoText: 'The airport code cannot be empty',
+    fnumIllegalInfoText: 'The flight number is illegal',
+    airlineIllegalInfoText: 'The airline is illegal',
+    airportIllegalInfoText: 'The airport is illegal',
+    pageNotFoundText: 'Unfortunately, the page has been lost.'
 }

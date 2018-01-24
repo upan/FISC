@@ -32,24 +32,31 @@
     </div>
 </template>
 <script>
-    import Airports from 'src@/js/config/all-airports-list.js'
     import PopularAirports from 'src@/js/config/popular-airports-list.js'
+    import AirportsList from 'src@/js/config/all-airports-list.js'
 
     export default {
         name: 'airportAutoComplete',
-        props: ['placeholder'],
+        props: ['placeholder', 'inputValuePar'],
         data(){
             return{
                 activeIndex: 0,
                 defalutMaxDropLi: 10,
                 isShowPopularPanel: false,
                 isShowAutoCompletePanel: false,
-                inputValue: '',
-                allAirports: Airports,
+                allAirports: AirportsList,
                 popularAirports: PopularAirports
             }
         },
         computed: {
+            inputValue: {
+                get(){
+                    return this.inputValuePar
+                },
+                set(val){
+                    this.$emit('update:inputValuePar', val)
+                }
+            },
             autoCompleteList(){
                 let _arr = [], self = this;
                 if(self.inputValue !== ''){

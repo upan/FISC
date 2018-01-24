@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import router from 'src@/js/config/router.js'
 import i18n from 'src@/js/config/vueI18n.js'
-import App from "src@/components/App.vue";
 import 'src@/styles/main.css'
-import { locale, DatePicker } from 'iview';
+import { locale, DatePicker, Message, Tooltip  } from 'iview';
 import 'iview/dist/styles/iview.css';
 
 import lang from 'iview/dist/locale/en-US';
-
 // configure language
 locale(lang);
 
@@ -17,14 +15,14 @@ if (process.env.NODE_ENV !== 'production'){
     Vue.config.debug = true;
 }
 
+//全局注册组件
 Vue.component('DatePicker', DatePicker);
+Vue.component('Tooltip', Tooltip);
 
-(function () {
-    new Vue({
-        el: '#app',
-        router,
-        i18n,
-        template: '<App/>',
-        components: { App }
-    });
-})()
+//注册$Message插件
+Vue.prototype.$Message = Message;
+
+new Vue({
+    router,
+    i18n
+}).$mount('#app');

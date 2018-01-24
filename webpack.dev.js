@@ -4,10 +4,15 @@ const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = merge(common, {
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     devServer: {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        historyApiFallback: {
+            rewrites: [
+                { from: /^\*$/, to: '/dist/index.html' }
+            ]
+        }
     },
     plugins: [
         new webpack.DefinePlugin({
