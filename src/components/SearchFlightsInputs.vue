@@ -30,9 +30,11 @@
 </template>
 
 <script>
-import AirportAutoComplete from 'src@/components/AirportAutoComplete.vue'
+// import AirportAutoComplete from 'src@/components/AirportAutoComplete.vue'
 import SingleDatePicker from 'src@/components/SingleDatePicker.vue'
 import {dateFormate} from 'src@/js/config/util.js'
+
+const AirportAutoComplete = () => import('./AirportAutoComplete.vue')
 
 export default {
   name: 'SearchFlightsInputs',
@@ -153,7 +155,7 @@ export default {
       }
   },
   components: {
-      AirportAutoComplete: resolve => {require(['./AirportAutoComplete.vue'], resolve)},//懒加载
+      AirportAutoComplete: AirportAutoComplete,//懒加载
       SingleDatePicker
   }
 }

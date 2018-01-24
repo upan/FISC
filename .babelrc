@@ -18,6 +18,7 @@
         ["import", {
             "libraryName": "iview",
             "libraryDirectory": "src/components"
-        }]
+        }],
+        "syntax-dynamic-import"
     ]
 }

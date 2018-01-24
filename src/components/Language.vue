@@ -1,6 +1,6 @@
 <template>
   <div @click="changeLanguage" class="language-box">
-      <Tooltip :content="$t('m.switchCnAndEnInfoText')" placement="left-end">
+      <Tooltip :content="$t('m.switchCnAndEnInfoText')" placement="left">
         <span class="language-span">{{languageText}}</span>
       </Tooltip>
   </div>
