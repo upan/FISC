@@ -10,6 +10,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
+        chunkFilename: 'chunk[id].js?[chunkhash]',
         filename: '[name].js'
     },
     module: {

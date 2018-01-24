@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from 'src@/views/Home.vue'
-import FlightList from 'src@/views/FlightList.vue'
-import PageNotFound from 'src@/views/PageNotFound.vue'
+// import Home from 'src@/views/Home.vue'
+// import FlightList from 'src@/views/FlightList.vue'
+// import PageNotFound from 'src@/views/PageNotFound.vue'
 
 Vue.use(Router)
 
@@ -13,21 +13,21 @@ export default new Router({
         {
             path: '/',
             name: 'Home',
-            component: Home
+            component: resolve => require(['../../views/Home.vue'], resolve),//懒加载
         },
         {
             path: '/index',
-            component: Home
+            component: resolve => require(['../../views/Home.vue'], resolve),//懒加载
         },
         {
             path: '/flight-list',
             name: 'flightList',
-            component: FlightList
+            component: resolve => require(['../../views/FlightList.vue'], resolve),//懒加载
         },
         {
             path: '*',
             name: '404',
-            component: PageNotFound
+            component: resolve => require(['../../views/PageNotFound.vue'], resolve)//懒加载
         }
     ]
 })

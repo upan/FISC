@@ -153,7 +153,7 @@ export default {
       }
   },
   components: {
-      AirportAutoComplete,
+      AirportAutoComplete: resolve => {require(['./AirportAutoComplete.vue'], resolve)},//懒加载
       SingleDatePicker
   }
 }

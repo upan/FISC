@@ -8,6 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = merge(common, {
     output: {
         path: path.resolve(__dirname, 'dist'),
+        chunkFilename: 'chunk[id].js?[chunkhash]',
         filename: '[name].[chunkhash].js'
     },
     plugins: [
