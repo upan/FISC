@@ -23,8 +23,8 @@ export default new Router({
             component: Home//懒加载
         },
         {
-            path: '/flight-list',
-            name: 'flightList',
+            path: '/flightlist/:type/:value/:date',
+            name: 'flightlist',
             component: FlightList//懒加载
         },
         {

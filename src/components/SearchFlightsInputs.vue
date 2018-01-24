@@ -150,8 +150,8 @@ export default {
         }
 
         //输入均合法 执行
-        console.info(this.searchType, this.searchValue, this.searchDate)
-        this.$router.go('/flight-list')
+        //跳转
+        this.$router.push({name: 'flightlist', params: {type: this.searchType, value: this.searchValue, date: this.searchDate}}) 
       }
   },
   components: {
