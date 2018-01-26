@@ -4,17 +4,22 @@
           <div class="logo"></div>
           <div class="nav-links">
               <ul>
-                  <li v-for="(linkObj, index) in links" @mouseover="index === 0 && (isShowLiDrop = true)" @mouseout="index === 0 && (isShowLiDrop = false)" :key="index" :class="{active: linkObj.active}">
-                    <router-link :to="$i18n.locale === 'zh-CN' ? '/cn' : '/'">{{$t('m.headerTitle1')}}</router-link>
-                    <ul v-if="index === 0 && isShowLiDrop" class="li-drop">
-                        <li>
-                            <router-link :to="$i18n.locale === 'zh-CN' ? '/cn/flightlist' : '/flightlist'">{{$t('m.headerTitleSub1')}}</router-link>
-                        </li>
-                        <li>
-                            <a href="">{{$t('m.headerTitleSub2')}}</a>
-                        </li>
-                    </ul>
-                  </li>
+                  <li class="li-on" @mouseover="isShowLiDrop = true" @mouseout="isShowLiDrop = false">
+                        <router-link :to="$i18n.locale === 'zh-CN' ? '/cn' : '/'">{{$t('m.headerTitle1')}}</router-link>
+						<ul class="li-drop" v-if="isShowLiDrop">
+							<li><router-link 
+                                :to="$i18n.locale === 'zh-CN' ? '/cn/flight-status-data' : '/flight-status-data'">
+                                {{$t('m.headerTitleSub1')}}
+                            </router-link></li>
+							<li><router-link 
+                                :to="$i18n.locale === 'zh-CN' ? '/cn/ads-b' : '/ads-b'">
+                                {{$t('m.headerTitleSub2')}}
+                            </router-link></li>
+						</ul>
+					</li>
+					<li><a href="weather.html">{{$t('m.headerTitle2')}}</a></li>
+					<li><a href="airport-flow-chart.html">{{$t('m.headerTitle3')}}</a></li>
+					<li><a href="report.html">{{$t('m.headerTitle4')}}</a></li>
               </ul>
               <div class='login login2'>{{ $t('m.loginText') }}</div>
           </div>
@@ -35,31 +40,6 @@ export default {
   data(){
       return {
           isShowLiDrop: false
-      }
-  },
-  computed: {
-      links: function () {
-          return [
-              {
-                  linkUrl: '',
-                  linkName: this.$t('m.headerTitle1'),
-                  active: true
-              },
-              {
-                  linkUrl: '',
-                  linkName: this.$t('m.headerTitle2'),
-                  active: false
-              },
-              {
-                  linkUrl: '',
-                  linkName: this.$t('m.headerTitle3'),
-                  active: false
-              },{
-                  linkUrl: '',
-                  linkName: this.$t('m.headerTitle4'),
-                  active: false
-              }
-          ]
       }
   }
 }

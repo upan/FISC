@@ -10,7 +10,11 @@
       </ul>
       <div class="search-number">
           <div class="enter-fnum enter-nu" v-if="searchType === 'fnum'">
-              <input type="text" key="fnum" v-model="fnumInputValue" :placeholder="$t('m.searchFnumPlaceholder')">
+              <input type="text" 
+                key="fnum" 
+                v-model="fnumInputValue" 
+                @keyup.enter="submitSearchForm"
+                :placeholder="$t('m.searchFnumPlaceholder')">
           </div>
           <div class="air-city" v-if="searchType === 'airport'">
               <AirportAutoComplete :inputValuePar.sync="airportInputValue1" :placeholder="$t('m.searchAirportStartPlaceholder')"/>
@@ -18,7 +22,11 @@
               <AirportAutoComplete :inputValuePar.sync="airportInputValue2" :placeholder="$t('m.searchAirportEndPlaceholder')"/>
           </div>
           <div class="enter-airline enter-nu" v-if="searchType === 'airline'">
-              <input type="text" key="airline" v-model="airlineInputValue" :placeholder="$t('m.searchAirlinePlaceholder')">
+              <input type="text"
+                key="airline" 
+                @keyup.enter="submitSearchForm"
+                v-model="airlineInputValue" 
+                :placeholder="$t('m.searchAirlinePlaceholder')">
           </div>
       </div>
       <div class="fligt-date enter-nu">
@@ -150,13 +158,12 @@ export default {
             }
         }
 
-        //输入均合法 执行
-        //跳转
+        //输入均合法 执行  ---跳转
         let _routerName = 'flightlist';
         if(this.$i18n.locale === 'zh-CN'){
             _routerName = 'flightlistCn'
         }
-        this.$router.push({name: _routerName, params: {type: this.searchType, value: this.searchValue, date: this.searchDate}}) 
+        this.$router.push({name: _routerName, params: {type: this.searchType, value: this.searchValue, date: this.searchDate, page: 1}}) 
       }
   },
   components: {

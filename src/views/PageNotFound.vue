@@ -1,25 +1,31 @@
 <template>
   <div id="pageNotFound">
-      <Indexheader></Indexheader>
-      <div class="a-404-image"></div>
-      <span class="not-fount-text">{{$t('m.pageNotFoundText')}}</span>
+      <MainHeader></MainHeader>
+      <div class="container">
+        <div class="a-404-image"></div>
+        <span class="not-fount-text">{{$t('m.pageNotFoundText')}}</span>
+      </div>
+      <MainFooter></MainFooter>
   </div>
 </template>
 
 <script>
-import Indexheader from "src@/components/IndexHeader.vue";
+import MainHeader from "src@/components/Header.vue";
+import MainFooter from 'src@/components/FISCFooter.vue'
 
 export default {
   name: "pageNotFound",
   components: {
-      Indexheader
+      MainHeader,
+      MainFooter
   }
 }
 </script>
 
 <style scoped>
-#pageNotFound{
+.container{
     text-align: center;
+    margin: 150px 0;
 }
 .not-fount-text{
     font-size: 14px;

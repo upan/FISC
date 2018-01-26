@@ -9,19 +9,19 @@
         <span>{{ $t('m.loadingText') }}</span>
     </div>
     <div v-if="hasFetchData">
-        <h2 class="total"><strong>{{titleInfo.mainTitle}}</strong><span class="title-date">Jan 25, 2018</span>, a total of <em>1</em><span class="title-unit">flight</span></h2>
+        <h2 class="total"><strong>{{titleInfo.mainTitle}}</strong><span class="title-date">{{ titleInfo.date }}</span>, {{ $t('m.flightListHeader.totalText') }}<em>{{titleInfo.counts}}</em><span class="title-unit">{{ titleInfo.unit }}</span></h2>
         <div class="flights-title">
-            <p class="w226 w2260">Flight No.</p>
-            <p class="w96">A/C Type</p>
-            <p class="w96">Tail No.</p>
-            <p class="w96">From</p>
-            <p class="w96">To</p>
-            <p class="w96">STD</p>
-            <p class="w96">ATD</p>
-            <p class="w96">STA</p>
-            <p class="w96">ATA</p>
-            <p class="w96">Carousel</p>
-            <p class="w108">Status</p>
+            <p class="w226 w2260">{{ $t('m.flightListHeader.flightNum') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.atype') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.tail') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.from') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.to') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.STD') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.ATD') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.STA') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.ATA') }}</p>
+            <p class="w96">{{ $t('m.flightListHeader.carousel') }}</p>
+            <p class="w108">{{ $t('m.flightListHeader.status') }}</p>
         </div>
         <ul class="flights-ul">
             <li v-for="(option, index) in flightListData" :key="index">
@@ -64,13 +64,15 @@
                 </div>
             </li>
         </ul>
+        <Pager :options="pageOptions"></Pager>
     </div>
 </div>
 </template>
 
 <script>
+import Pager from 'src@/components/Pager.vue'
 import Urls from 'src@/js/config/url-config.js'
-import { secondToDateByFormate, mappingStatus } from 'src@/js/config/util.js'
+import { secondToDateByFormate, mappingStatus, numberToEnMonthName } from 'src@/js/config/util.js'
 
 let params = null;
 
@@ -80,8 +82,12 @@ export default {
       return {
           isLoading: false,
           flightListData: [],
-          titleInfo: {}
+          titleInfo: {},
+          pageOptions: {}
       }
+  },
+  components: {
+      Pager
   },
   computed: {
       hasFetchData(){
@@ -129,10 +135,11 @@ export default {
     getRequestParams: function(){
         let paramsValue = params.value,
             _dateArr = params.date && params.date.split('/'),
+            page = Number(params.page),
             fdate = _dateArr[2] + '-' + _dateArr[1] + '-' + _dateArr[0],
             _obj = {
                 fdate,
-                page: 1,
+                page,
                 pageSize: 20
             };
         switch (params.type) {
@@ -176,12 +183,22 @@ export default {
     fetchFlightsSuccess(data){
         let listData = data.data,
             _list = [],
-            mainTitle = params.type === 'airport' ? params.value.replace(',', '-') : params.value;
-
+            mainTitle = params.type === 'airport' ? params.value.replace(',', '-') : params.value,
+            _dateArr = params.date && params.date.split('/'),
+            date = this.$i18n.locale === 'zh-CN' ? _dateArr[2] + '年' + _dateArr[1] + '月' + _dateArr[0] + '日' : numberToEnMonthName(_dateArr[1]) + ' ' + _dateArr[0] + ', ' + _dateArr[2],
+            unit = this.$i18n.locale === 'zh-CN' ? ' 次航班' : listData.length <= 1 ? ' flight' : ' flights',
+            counts = data.rowTotal || 0;
+            
         mainTitle = mainTitle.toUpperCase();
         
         this.$set(this, 'titleInfo', {
-            mainTitle
+            mainTitle,
+            date,
+            unit,
+            counts
+        })
+        this.$set(this, 'pageOptions', {
+            pageCount: data.pageTotal
         })
 
         listData.forEach( (item, index) => {

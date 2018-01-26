@@ -43,6 +43,7 @@ export const m = {
     loadingText: 'Loading...',
     codeShareText: 'code sharing',
     statusText: {
+        'flightStatus-1': 'UnKnow',
         flightStatus0: 'Schedule',
         flightStatus1: 'Take-off',
         flightStatus2: 'Arrived',
@@ -53,5 +54,19 @@ export const m = {
         flightStatus11: 'Returning',
         flightStatus12: 'Boarding',
         flightStatus73: 'Cancel in Advance',
+    },  
+    flightListHeader: {
+        flightNum: 'Flight No.',
+        atype: 'A/C Type',
+        tail: 'Tail No.',
+        from: 'From',
+        to: 'To',
+        STD: 'STD',
+        ATD: 'ATD',
+        STA: 'STA',
+        ATA: 'ATA',
+        carousel: 'Carousel',
+        status: 'Status',
+        'totalText': 'a total of '
     }
 }

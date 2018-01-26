@@ -4,16 +4,22 @@
 			<div class="logo"></div>
 			<div class="nav">
 				<ul class="nav-ul2">
-					<li class="li-on" @mouseover="isShowLiDrop = true" @mouseout="isShowLiDrop = false">
+					<li :class="{'li-on': index === 1}" @mouseover="isShowLiDrop = true" @mouseout="isShowLiDrop = false">
                         <router-link :to="$i18n.locale === 'zh-CN' ? '/cn' : '/'">{{$t('m.headerTitle1')}}</router-link>
 						<ul class="li-drop" v-if="isShowLiDrop">
-							<li><router-link :to="$i18n.locale === 'zh-CN' ? '/cn/flightlist' : '/flightlist'">{{$t('m.headerTitleSub1')}}</router-link></li>
-							<li><a href="adsb-show.html">{{$t('m.headerTitleSub2')}}</a></li>
+							<li><router-link 
+                                :to="$i18n.locale === 'zh-CN' ? '/cn/flight-status-data' : '/flight-status-data'">
+                                {{$t('m.headerTitleSub1')}}
+                            </router-link></li>
+							<li><router-link 
+                                :to="$i18n.locale === 'zh-CN' ? '/cn/ads-b' : '/ads-b'">
+                                {{$t('m.headerTitleSub2')}}
+                            </router-link></li>
 						</ul>
 					</li>
-					<li><a href="weather.html">{{$t('m.headerTitle2')}}</a></li>
-					<li><a href="airport-flow-chart.html">{{$t('m.headerTitle3')}}</a></li>
-					<li><a href="report.html">{{$t('m.headerTitle4')}}</a></li>
+					<li :class="{'li-on': index === 2}" ><a href="weather.html">{{$t('m.headerTitle2')}}</a></li>
+					<li :class="{'li-on': index === 3}"><a href="airport-flow-chart.html">{{$t('m.headerTitle3')}}</a></li>
+					<li :class="{'li-on': index === 4}"><a href="report.html">{{$t('m.headerTitle4')}}</a></li>
 				</ul>
 				<div class="login login2">{{ $t('m.loginText') }}</div>
 			</div> 
@@ -27,6 +33,7 @@ import Language from 'src@/components/Language.vue'
 
 export default {
   name: 'MainHeader',
+  props: ['index'],
   data(){
       return {
           isShowLiDrop: false
@@ -43,7 +50,7 @@ export default {
     width: 1200px;
     margin: 0 auto;
 }
-.header{ height:120px; background:#fff;font-size: 16px;-webkit-box-shadow: 0 1px 15px rgba(0,0,0,.15);box-shadow: 0 1px 15px rgba(0,0,0,.15)}
+.header{position: relative;z-index: 9999; height:120px; background:#fff;font-size: 16px;-webkit-box-shadow: 0 1px 15px rgba(0,0,0,.15);box-shadow: 0 1px 15px rgba(0,0,0,.15)}
 .height120{height: 120px;}
 .header .logo{height:42px;width:301px; margin-top: 38px; float: left;background: url(../images/logo2.png) no-repeat center center;}
 .header .nav,.header .login{float:right;}

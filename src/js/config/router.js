@@ -6,6 +6,7 @@ import Router from 'vue-router';
 const Home = () => import('../../views/Home.vue');
 const FlightList = () => import('../../views/FlightList.vue');
 const PageNotFound = () => import('../../views/PageNotFound.vue');
+const ADSB = () => import('../../views/ADS-B.vue')
 import App from 'src@/App.vue'
 
 Vue.use(Router)
@@ -23,13 +24,18 @@ export default new Router({
                     component: Home//懒加载
                 },
                 {
-                    path: '/flightlist',
+                    path: '/flight-status-data',
                     component: FlightList//懒加载
                 },
                 {
-                    path: '/flightlist/:type/:value/:date',
+                    path: '/flight-status-data/:type/:value/:date/:page',
                     name: 'flightlist',
                     component: FlightList//懒加载
+                },
+                {
+                    path: '/ads-b',
+                    name: 'ADS-B',
+                    component: ADSB//懒加载
                 }
             ]
         },
@@ -42,13 +48,18 @@ export default new Router({
                     component: Home//懒加载
                 },
                 {
-                    path: 'flightlist',
+                    path: 'flight-status-data',
                     component: FlightList//懒加载
                 },
                 {
-                    path: 'flightlist/:type/:value/:date',
+                    path: 'flight-status-data/:type/:value/:date/:page',
                     name: 'flightlistCn',
                     component: FlightList//懒加载
+                },
+                {
+                    path: 'ads-b',
+                    name: 'ADS-BCn',
+                    component: ADSB//懒加载
                 }
             ]
         },

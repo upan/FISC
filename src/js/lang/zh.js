@@ -43,6 +43,7 @@ export const m = {
     loadingText: '加载中...',
     codeShareText: '共享',
     statusText: {
+        'flightStatus-1': '未知',
         flightStatus0: '计划',
         flightStatus1: '起飞',
         flightStatus2: '到达',
@@ -53,5 +54,19 @@ export const m = {
         flightStatus11: '复飞',
         flightStatus12: '登机',
         flightStatus73: '提前取消',
+    },
+    flightListHeader: {
+        flightNum: '航班号',
+        atype: '机型',
+        tail: '飞机编号',
+        from: '出发地',
+        to: '到达地',
+        STD: '计划起飞',
+        ATD: '实际起飞',
+        STA: '计划到达',
+        ATA: '实际到达',
+        carousel: '行李转盘',
+        status: '状态',
+        'totalText': '共 '
     }
 }

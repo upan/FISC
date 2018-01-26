@@ -1,6 +1,6 @@
 <template>
   <div id="flightList">
-      <MainHeader/>
+      <MainHeader :index="1"/>
       <div class="flight-search2">
         <SearchFlightsInputs :defaultValueObj="defaultSearchValue"/>
       </div>
