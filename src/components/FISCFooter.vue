@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped>
-.foot-contact{background-color: #002e54;height: 188px;}
+.foot-contact{background-color: #002e54;height: 188px;font-size: 14px;}
 .foot-ul{overflow: hidden; width: 1200px; margin: 0 auto;}
 .foot-ul li{float: left; width: 400px; color: #fff;}
 .foot-ul li div{font-size: 18px;margin-top: 36px;margin-bottom: 16px;}

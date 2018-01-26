@@ -2,7 +2,7 @@
   <div class="search-flight">
       <ul class="flight-tab">
           <li 
-            :class="{active: typeObj.active}" 
+            :class="{active: searchType === typeObj.key}" 
             @click="changeSearchType(index)"
             v-for="(typeObj, index) in searchTypeList" 
             :key="index">{{$t('m.' + typeObj.typeName)}}
@@ -38,14 +38,15 @@ const AirportAutoComplete = () => import('./AirportAutoComplete.vue')
 
 export default {
   name: 'SearchFlightsInputs',
+  props: ['defaultValueObj'],
   data(){
       return {
-          searchType: 'fnum',
-          fnumInputValue: '',
-          airportInputValue1: '',
-          airportInputValue2: '',
-          airlineInputValue: '',
-          searchDate: dateFormate(new Date(), 'dd/MM/yyyy'),
+          searchType: this.defaultValueObj && this.defaultValueObj.type ? this.defaultValueObj.type : 'fnum',
+          fnumInputValue: this.defaultValueObj && this.defaultValueObj.type === 'fnum' ? this.defaultValueObj.searchValue : '',
+          airportInputValue1: this.defaultValueObj && this.defaultValueObj.type === 'airport' ? this.defaultValueObj.searchValue.split(',')[0] : '',
+          airportInputValue2: this.defaultValueObj && this.defaultValueObj.type === 'airport' ? this.defaultValueObj.searchValue.split(',')[1] : '',
+          airlineInputValue: this.defaultValueObj && this.defaultValueObj.type === 'airline' ? this.defaultValueObj.searchValue : '',
+          searchDate: this.defaultValueObj && this.defaultValueObj.searchDate ? this.defaultValueObj.searchDate : dateFormate(new Date(), 'dd/MM/yyyy'),
           options: {
                 disabledDate (date) {
                     return date && (date.valueOf() < Date.now() - 2592000000 || date.valueOf() > Date.now() + 259200000);
@@ -151,7 +152,11 @@ export default {
 
         //输入均合法 执行
         //跳转
-        this.$router.push({name: 'flightlist', params: {type: this.searchType, value: this.searchValue, date: this.searchDate}}) 
+        let _routerName = 'flightlist';
+        if(this.$i18n.locale === 'zh-CN'){
+            _routerName = 'flightlistCn'
+        }
+        this.$router.push({name: _routerName, params: {type: this.searchType, value: this.searchValue, date: this.searchDate}}) 
       }
   },
   components: {
@@ -185,6 +190,10 @@ export default {
         line-height: 46px;
         border-radius: 2px;
         cursor: pointer;
+    }
+    .search-flight li:hover{
+        background-color: rgba(61, 134, 229, .6);
+        color: #fff;
     }
     .search-flight li.active {
         background-color: #3d86e5;

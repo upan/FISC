@@ -38,5 +38,20 @@ export const m = {
     fnumIllegalInfoText: 'The flight number is illegal',
     airlineIllegalInfoText: 'The airline is illegal',
     airportIllegalInfoText: 'The airport is illegal',
-    pageNotFoundText: 'Unfortunately, the page has been lost.'
+    pageNotFoundText: 'Unfortunately, the page has been lost.',
+    flightListNoFound: 'Sorry, cannot find the flight information you entered',
+    loadingText: 'Loading...',
+    codeShareText: 'code sharing',
+    statusText: {
+        flightStatus0: 'Schedule',
+        flightStatus1: 'Take-off',
+        flightStatus2: 'Arrived',
+        flightStatus3: 'Cancelled',
+        flightStatus4: 'Delay',
+        flightStatus5: 'Divert',
+        flightStatus9: 'Boarding Finished',
+        flightStatus11: 'Returning',
+        flightStatus12: 'Boarding',
+        flightStatus73: 'Cancel in Advance',
+    }
 }

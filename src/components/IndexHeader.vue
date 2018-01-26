@@ -5,10 +5,10 @@
           <div class="nav-links">
               <ul>
                   <li v-for="(linkObj, index) in links" @mouseover="index === 0 && (isShowLiDrop = true)" @mouseout="index === 0 && (isShowLiDrop = false)" :key="index" :class="{active: linkObj.active}">
-                    <a :href="linkObj.linkUrl">{{linkObj.linkName}}</a>
+                    <router-link :to="$i18n.locale === 'zh-CN' ? '/cn' : '/'">{{$t('m.headerTitle1')}}</router-link>
                     <ul v-if="index === 0 && isShowLiDrop" class="li-drop">
                         <li>
-                            <a href="">{{$t('m.headerTitleSub1')}}</a>
+                            <router-link :to="$i18n.locale === 'zh-CN' ? '/cn/flightlist' : '/flightlist'">{{$t('m.headerTitleSub1')}}</router-link>
                         </li>
                         <li>
                             <a href="">{{$t('m.headerTitleSub2')}}</a>
@@ -132,5 +132,10 @@ export default {
         line-height: 40px;
         color: #fff;
         cursor: pointer;
+    }
+    @media screen and (max-width: 1200px){
+        .nav-links>ul .li-drop{
+            width: 150% !important;
+        }
     }
 </style>

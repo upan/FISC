@@ -10,22 +10,24 @@
 export default {
   name: 'language',
   props: ['language'],
-  data(){
-      return {
-          languageText: '中文'
-      }
+  computed: {
+    languageText(){
+        return this.$i18n.locale === 'zh-CN' ? 'EN' : '中文'
+    }
   },
   methods: {
       changeLanguage(){
-          switch (this.languageText) {
-              case '中文':
-                  this.$i18n.locale = 'zh-CN'
-                  break;
-              case 'EN':
-                  this.$i18n.locale = 'en-US'
-                  break;
+          let path = this.$route.path;
+          switch (this.$i18n.locale) {
+              case 'zh-CN':
+                this.$i18n.locale = 'en-US';
+                this.$router.replace(path.replace('/cn', ''))
+                break;
+              case 'en-US':
+                this.$i18n.locale = 'zh-CN';
+                this.$router.replace('/cn' + path)
+                break;
           }
-          this.languageText === '中文' ? this.languageText = 'EN' : this.languageText = '中文'
       }
   }
 }
@@ -37,14 +39,13 @@ export default {
     top: 30px;
     right: 5px;
     cursor: pointer;
-    color: #fff;
+    color: #f8f8f8;
     font-size: 14px;
 }
 .language-box span.language-span{
     padding: 2px 4px;
     border: 1px solid #aaa;
     border-radius: 3px;
-    color: #f8f8f8;
     font-size: 10px;
     margin-right: 4px;
 }

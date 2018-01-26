@@ -12,3 +12,26 @@ export const dateFormate = (date, fmt) => {
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
 }
+
+export const secondToDateByFormate = (second, fmt) => {
+    second = Number(second);
+    let date = new Date(second * 1000)
+    return dateFormate(date, fmt);
+}
+
+export const mappingStatus = (statusCode) => {
+    statusCode = Number(statusCode);
+    var obj = {
+        0: 'Schedule',
+        1: 'Take-off',
+        2: 'Arrived',
+        3: 'Cancelled',
+        4: 'Delay',
+        5: 'Divert',
+        9: 'Boarding Finished',
+        11: 'Returning',
+        12: 'Boarding',
+        73: 'Cancel in Advance'
+    }
+    return obj[statusCode];
+}

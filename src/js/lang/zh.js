@@ -24,7 +24,7 @@ export const m = {
     footerText3: '电话',
     footerText4: '传真',
     footerText5: '访问我们',
-    footerText6: '中国安徽省合肥市书山区潜山路320号城市国际广场A座17楼',
+    footerText6: '中国安徽省合肥市蜀山区潜山路320号新华国际广场A座17楼',
     description1: '环球飞行追踪，来自中国大陆ADS-B的飞行路线',
     description2: '中国机场天气状况及天气预报',
     description3: '中国机场的交通量',
@@ -38,5 +38,20 @@ export const m = {
     fnumIllegalInfoText: '航班号不合法',
     airlineIllegalInfoText: '航司不合法',
     airportIllegalInfoText: '机场编码不合法',
-    pageNotFoundText: '不巧，网页走丢了...'
+    pageNotFoundText: '不巧，网页走丢了...',
+    flightListNoFound: '抱歉，没有找到您输入的航班信息',
+    loadingText: '加载中...',
+    codeShareText: '共享',
+    statusText: {
+        flightStatus0: '计划',
+        flightStatus1: '起飞',
+        flightStatus2: '到达',
+        flightStatus3: '取消',
+        flightStatus4: '延误',
+        flightStatus5: '中转',
+        flightStatus9: '登机结束',
+        flightStatus11: '复飞',
+        flightStatus12: '登机',
+        flightStatus73: '提前取消',
+    }
 }

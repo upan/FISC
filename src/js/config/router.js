@@ -6,6 +6,7 @@ import Router from 'vue-router';
 const Home = () => import('../../views/Home.vue');
 const FlightList = () => import('../../views/FlightList.vue');
 const PageNotFound = () => import('../../views/PageNotFound.vue');
+import App from 'src@/App.vue'
 
 Vue.use(Router)
 
@@ -15,17 +16,41 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'Home',
-            component: Home//懒加载
+            component: App,
+            children: [
+                {
+                    path: '',
+                    component: Home//懒加载
+                },
+                {
+                    path: '/flightlist',
+                    component: FlightList//懒加载
+                },
+                {
+                    path: '/flightlist/:type/:value/:date',
+                    name: 'flightlist',
+                    component: FlightList//懒加载
+                }
+            ]
         },
         {
-            path: '/index',
-            component: Home//懒加载
-        },
-        {
-            path: '/flightlist/:type/:value/:date',
-            name: 'flightlist',
-            component: FlightList//懒加载
+            path: '/cn',
+            component: App,
+            children: [
+                {
+                    path: '',
+                    component: Home//懒加载
+                },
+                {
+                    path: 'flightlist',
+                    component: FlightList//懒加载
+                },
+                {
+                    path: 'flightlist/:type/:value/:date',
+                    name: 'flightlistCn',
+                    component: FlightList//懒加载
+                }
+            ]
         },
         {
             path: '*',

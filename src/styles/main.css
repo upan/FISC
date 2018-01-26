@@ -18,7 +18,7 @@ input,select {
 
 body,html {
 	height: 100%;
-	color: #031833;
+	color: #031833 !important;
 	font-size: 14px
 }
 
@@ -81,6 +81,10 @@ a{
 	 font-size: 18px;
 	 text-align: center;
 }
+.auto1200 {
+    width: 1200px;
+    margin: 0 auto;
+}
 .overlay{
 	position: fixed;
 	top: 0;
@@ -107,6 +111,9 @@ a{
 @media screen and (max-width: 1200px) {
     .header-width {
         width: 960px !important;
+	}
+	.auto1200 {
+		width: 960px !important;
 	}
 	.nav-links>ul>li>a {
 		padding-left: 0 !important;
